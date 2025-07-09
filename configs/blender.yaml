@@ -1,10 +1,10 @@
-home_dir: '/home/jagrut.thakare/Project/ghost-2.0/blender_checkpoints'
+home_dir: '/content/ghost-2.0/blender_checkpoints'
 experiment_name: 'test_run'
 # num_gpus: 8
 num_gpus: 1
         
 train_options:
-    data_path: '/home/jagrut.thakare/Project/ghost-2.0/src/data/train_h5'
+    # data_path: '/content/ghost-2.0/src/data/train'
     weights:
         w_perc_vgg: 0.01
         w_rec: 1
@@ -42,8 +42,7 @@ train_options:
 
         
 inference_options:
-    data_path: '/home/jagrut.thakare/Project/ghost-2.0/src/data/test_h5'
-
+    data_path: '/content/ghost-2.0/src/data/test'
     shuffle: True
     flip_target: False
     affine_source: False

@@ -1,4 +1,4 @@
-home_dir: '/home/jagrut.thakare/Project/ghost-2.0/aligner_checkpoints'
+home_dir: '/content/ghost-2.0/aligner_checkpoints'
 experiment_name: 'test_run'
 # num_gpus: 8
 num_gpus: 1
@@ -32,8 +32,7 @@ model:
     segment: False
         
 train_options:
-    # data_path: '/home/jovyan/yaschenko/dev_masks_parsings/train'
-    data_path: '/home/jagrut.thakare/Project/ghost-2.0/src/data/train_h5'
+    data_path: '/content/ghost-2.0/src/data/train'  # Leave as is for now, update later with train data
     weights:
         w_rec: 30
         w_perc_vgg: 0.0001
@@ -68,8 +67,7 @@ train_options:
 
         
 inference_options:
-    # data_path: '/home/jovyan/yaschenko/dev_masks_parsings/test'
-    data_path: '/home/jagrut.thakare/Project/ghost-2.0/src/data/test_h5'
+    data_path: '/content/ghost-2.0/src/data/test' 
     batch_size: 20
     samples_cnt: nulll
     source_len: 1

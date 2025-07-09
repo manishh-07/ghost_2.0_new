@@ -143,5 +143,45 @@ def main():
                 else:
                     print(f"Video file {video_path} not found")
 
+
+def main():
+    # Initialize models
+    face_app = FaceAnalysis(providers=['CUDAExecutionProvider', 'CPUExecutionProvider'], allowed_modules=['detection'])
+    face_app.prepare(ctx_id=0, det_size=(320, 320))
+
+    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D, flip_input=False, device='cuda:0')
+
+    segment_model = StyleMatte()
+    segment_model.load_state_dict(
+        torch.load('/content/ghost-2.0/repos/stylematte/stylematte/checkpoints/stylematte_synth.pth', map_location='cpu')
+    )
+    segment_model.cuda()
+    segment_model.eval()
+
+    parsing_session = ort.InferenceSession('/content/ghost-2.0/weights/segformer_B5_ce.onnx', providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
+
+    # Root directory for all videos
+    video_root = '/content/ghost-2.0/src/data/test/mp4'
+    output_root = '/content/ghost-2.0/src/data/test/mp4'
+    
+    # # Root directory for all videos in the train directory
+    # video_root = '/content/ghost-2.0/src/data/train/mp4'
+    # output_root = '/content/ghost-2.0/src/data/train/mp4'
+
+    # Recursively process all .mp4 files
+    for root, dirs, files in os.walk(video_root):
+        for file in files:
+            if file.endswith('.mp4'):
+                video_path = os.path.join(root, file)
+                # Create output path preserving the directory structure
+                relative_path = os.path.relpath(video_path, video_root)
+                h5_path = os.path.join(output_root, relative_path.replace('.mp4', '.h5'))
+                os.makedirs(os.path.dirname(h5_path), exist_ok=True)
+                if os.path.exists(video_path):
+                    print(f"Processing {video_path}...")
+                    preprocess_video(video_path, h5_path, face_app, fa, segment_model, parsing_session)
+                else:
+                    print(f"Video file {video_path} not found")
+
 if __name__ == "__main__":
     main()

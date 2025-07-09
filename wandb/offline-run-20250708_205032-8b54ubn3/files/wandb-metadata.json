@@ -1,0 +1,45 @@
+{
+  "os":  "Linux-6.8.0-63-generic-x86_64-with-glibc2.39",
+  "python":  "CPython 3.10.18",
+  "startedAt":  "2025-07-08T15:20:32.794713Z",
+  "args":  [
+    "--config",
+    "./configs/blender.yaml"
+  ],
+  "program":  "/home/jagrut.thakare/Project/ghost-2.0/train_blender.py",
+  "codePath":  "train_blender.py",
+  "git":  {
+    "remote":  "https://github.com/ai-forever/ghost-2.0",
+    "commit":  "b485e1a7f87a7190528e4ade8f0fef86317af7c4"
+  },
+  "root":  ".",
+  "host":  "gpu01",
+  "executable":  "/home/jagrut.thakare/anaconda3/envs/ghost/bin/python",
+  "codePathLocal":  "train_blender.py",
+  "cpu_count":  20,
+  "cpu_count_logical":  28,
+  "gpu":  "NVIDIA GeForce RTX 4080 SUPER",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "3934171283456",
+      "used":  "2868825735168"
+    }
+  },
+  "memory":  {
+    "total":  "67185725440"
+  },
+  "cpu":  {
+    "count":  20,
+    "countLogical":  28
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 4080 SUPER",
+      "memoryTotal":  "17171480576",
+      "cudaCores":  10240,
+      "architecture":  "Ada"
+    }
+  ],
+  "cudaVersion":  "12.4"
+}

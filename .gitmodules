@@ -1,0 +1,9 @@
+[submodule "repos/BlazeFace_PyTorch"]
+	path = repos/BlazeFace_PyTorch
+	url = git@github.com:hollance/BlazeFace-PyTorch.git
+[submodule "repos/stylematte"]
+	path = repos/stylematte
+	url = git@github.com:chroneus/stylematte.git
+[submodule "repos/DECA"]
+	path = repos/DECA
+	url = git@github.com:yfeng95/DECA.git
